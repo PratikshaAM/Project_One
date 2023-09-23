@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Image Slider</title>
+    <style>
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* Adjust the maximum width of the slider */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-slider">
+        <div class="slides">
+            <div class="slide"><img src="WEB-2.png" alt="Image 1"></div>
+            <div class="slide"><img src="WEB-3.png" alt="Image 2"></div>
+            <div class="slide"><img src="WEB.png" alt="Image 3"></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.hero-slider');
+        const slides = document.querySelector('.slides');
+        const slideWidth = slider.clientWidth;
+        let currentIndex = 0;
+
+        function goToSlide(index) {
+            currentIndex = index;
+            const translateX = -currentIndex * slideWidth;
+            slides.style.transform = `translateX(${translateX}px)`;
+        }
+
+        // Automatic slide change every 5 seconds (adjust as needed)
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.children.length;
+            goToSlide(currentIndex);
+        }, 5000);
+
+        // Initialize slider
+        goToSlide(currentIndex);
+    </script>
+</body>
+</html>

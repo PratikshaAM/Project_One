@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <header>
+        <img class="logo" src="dailybitemainlogo.png" alt="logo">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="#" style="color: #ff5002; " >HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <div class="navsearch">
+            <div class="search-icon">
+                <img src="Search-2.png" class="search" alt="search" >
+                <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+            </div>
+            <input placeholder="Search" class="searchinput" style="font-weight:bold;">
+        </div>
+        <div class="twologo">
+            <img src="Like-2.png" alt="Heart" >
+            <img src="Cart.png" alt="cart">
+        </div>
+       
+    </header>
+    <!-- <div class="hero-container ">
+      
+      </div> -->
+
+      <div class="hero-slider">
+        <div class="slides">
+            <div class="slide"><img src="WEB-2.png" alt="Image 1"></div>
+            <div class="slide"><img src="WEB-3.png" alt="Image 2"></div>
+            <div class="slide"><img src="WEB.png" alt="Image 3"></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.hero-slider');
+        const slides = document.querySelector('.slides');
+        const slideWidth = slider.clientWidth;
+        let currentIndex = 0;
+
+        function goToSlide(index) {
+            currentIndex = index;
+            const translateX = -currentIndex * slideWidth;
+            slides.style.transform = `translateX(${translateX}px)`;
+        }
+
+        // Automatic slide change every 5 seconds (adjust as needed)
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.children.length;
+            goToSlide(currentIndex);
+        }, 3000);
+
+        // Initialize slider
+        goToSlide(currentIndex);
+    </script>
+
+</body>
+</html>
