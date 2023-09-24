@@ -45,23 +45,28 @@
     <script>
         const slider = document.querySelector('.hero-slider');
         const slides = document.querySelector('.slides');
-        const slideWidth = slider.clientWidth;
         let currentIndex = 0;
 
         function goToSlide(index) {
             currentIndex = index;
-            const translateX = -currentIndex * slideWidth;
+            const translateX = -currentIndex * window.innerWidth; // Use window.innerWidth to get viewport width
             slides.style.transform = `translateX(${translateX}px)`;
         }
 
-        // Automatic slide change every 5 seconds (adjust as needed)
-        setInterval(() => {
+        function nextSlide() {
             currentIndex = (currentIndex + 1) % slides.children.length;
             goToSlide(currentIndex);
-        }, 3000);
+        }
+
+        window.addEventListener('resize', () => {
+            goToSlide(currentIndex); // Recalculate slide position on window resize
+        });
+
+        setInterval(nextSlide, 5000); // Change the interval as needed
 
         // Initialize slider
         goToSlide(currentIndex);
+        
     </script>
 
 </body>
